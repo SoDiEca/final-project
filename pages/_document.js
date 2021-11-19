@@ -1,7 +1,6 @@
-/* eslint-disable @next/next/no-document-import-in-page */
-import { ServerStyleSheets } from '@material-ui/core/styles';
-import Document, { Head, Html, Main, NextScript } from 'next/document';
 import React from 'react';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
+import { ServerStyleSheets } from '@material-ui/core/styles';
 
 export default class MyDocument extends Document {
   render() {
@@ -10,7 +9,7 @@ export default class MyDocument extends Document {
         <Head>
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap"
+            href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Oxygen&family=PT+Serif&display=swap"
           />
         </Head>
         <body>

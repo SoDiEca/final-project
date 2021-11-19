@@ -1,38 +1,45 @@
 import React, { useContext } from 'react';
-import Layout from '../../components/Layout';
 import NextLink from 'next/link';
+import Layout from '../../components/Layout';
+import useStyles from '../../utils/styles';
+import Image from 'next/image';
+import Product from '../../models/Product';
+import db from '../../utils/db';
+import axios from 'axios';
+import { Store } from '../../utils/store';
+import { useRouter } from 'next/router';
+
 import {
-  Button,
-  Card,
-  Grid,
   Link,
+  Grid,
   List,
   ListItem,
   Typography,
+  Card,
+  Button,
 } from '@material-ui/core';
-import useStyles from '../../utils/styles';
-import Image from 'next/image';
-import db from '../../utils/db';
-import Product from '../../models/product';
-import axios from 'axios';
 
 export default function ProductScreen(props) {
-  const { dispatch } = useContext(Store);
+  const router = useRouter();
+  const { state, dispatch } = useContext(Store);
   const { product } = props;
   const classes = useStyles();
-
   if (!product) {
-    return <div>Product not found ...</div>;
+    return <div>Product not found...</div>;
   }
-  const plantNowHandler = async () => {
+  const addToCartHandler = async () => {
+    const existItem = state.cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${product._id}`);
-    dispatchEvent({
-      type: 'PLANT_NOW_ITEM',
-      payload: { ...product, quantity: 1 },
-    });
+    if (data.countInStock < quantity) {
+      window.alert('Product not available...');
+      return;
+    }
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+    router.push('/cart');
   };
   return (
-    <Layout title={product.name}>
+    <Layout title={product.name} description={product.description}>
       <div className={classes.section}>
         <NextLink href="/" passHref>
           <Link>
@@ -54,7 +61,7 @@ export default function ProductScreen(props) {
           <List>
             <ListItem>
               <Typography component="h1" variant="h1">
-                {product.name}
+                {product.description}
               </Typography>
             </ListItem>
           </List>
@@ -67,9 +74,8 @@ export default function ProductScreen(props) {
                   <Grid item xs={6}>
                     <Typography>Price</Typography>
                   </Grid>
-
                   <Grid item xs={6}>
-                    <Typography>${product.price}</Typography>
+                    <Typography>€{product.price}</Typography>
                   </Grid>
                 </Grid>
               </ListItem>
@@ -78,9 +84,9 @@ export default function ProductScreen(props) {
                   fullWidth
                   variant="contained"
                   color="primary"
-                  onClick={plantNowHandler}
+                  onClick={addToCartHandler}
                 >
-                  Plant now
+                  Add to cart
                 </Button>
               </ListItem>
             </List>
