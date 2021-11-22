@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Product from '../../models/Product';
 import db from '../../utils/db';
 import axios from 'axios';
-import { Store } from '../../utils/store';
+import { Store } from '../../utils/Store';
 import { useRouter } from 'next/router';
 
 import {
