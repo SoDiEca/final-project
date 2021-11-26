@@ -9,12 +9,11 @@ import {
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
 import useStyles from '../utils/styles';
 import Cookies from 'js-cookie';
-import { mergeClasses } from '@material-ui/styles';
 import { Controller, useForm } from 'react-hook-form';
 import { useSnackbar } from 'notistack';
 

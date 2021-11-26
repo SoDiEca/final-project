@@ -3,11 +3,17 @@ import Cookies from 'js-cookie';
 
 export const Store = createContext();
 const initialState = {
-  darkMode: Cookies.get('darkMode') === 'ON' ? true : false,
+  // darkMode: Cookies.get('darkMode') === 'ON' ? true : false,
   cart: {
     cartItems: Cookies.get('cartItems')
       ? JSON.parse(Cookies.get('cartItems'))
       : [],
+    billingAddress: Cookies.get('billingAddress')
+      ? JSON.stringify(Cookies.get('billingAddress'))
+      : {},
+    paymentDetails: Cookies.get('paymentDetails')
+      ? Cookies.get('paymentDetails')
+      : '',
   },
   userInfo: Cookies.get('userInfo')
     ? JSON.stringify(Cookies.get('userInfo'))
@@ -16,10 +22,10 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'DARK_MODE_ON':
-      return { ...state, darkMode: true };
-    case 'DARK_MODE_OFF':
-      return { ...state, darkMode: false };
+    // case 'DARK_MODE_ON':
+    //   return { ...state, darkMode: true };
+    // case 'DARK_MODE_OFF':
+    //   return { ...state, darkMode: false };
     case 'CART_ADD_ITEM': {
       const newItem = action.payload;
       const existItem = state.cart.cartItems.find(
@@ -40,6 +46,21 @@ function reducer(state, action) {
       Cookies.set('cartItems', JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
     }
+    case 'SAVE_BILLING_ADDRESS':
+      return {
+        ...state,
+        cart: { ...state.cart, billingAddress: action.payload },
+      };
+    case 'SAVE_PAYMENT_DETAILS':
+      return {
+        ...state,
+        cart: { ...state.cart, paymentDetails: action.payload },
+      };
+    case 'CART_CLEAR':
+      return {
+        ...state,
+        cart: { ...state.cart, cartItems: [] },
+      };
     case 'USER_LOGIN':
       return { ...state, userInfo: action.payload };
     case 'USER_LOGOUT':

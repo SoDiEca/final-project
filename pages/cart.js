@@ -42,7 +42,7 @@ function CartScreen() {
     dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
   };
   const checkOutHandler = () => {
-    router.push('/checkout');
+    router.push('/billing');
   };
   return (
     <Layout title="Shopping Cart">

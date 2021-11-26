@@ -39,7 +39,7 @@ export default function Layout({ title, description, children }) {
       },
     },
     palette: {
-      type: darkMode ? 'dark' : 'light',
+      // type: darkMode ? 'dark' : 'light',
       primary: {
         main: '#336600',
       },
@@ -49,11 +49,11 @@ export default function Layout({ title, description, children }) {
     },
   });
   const classes = useStyles();
-  const darkModeChangeHandler = () => {
-    dispatch({ type: darkMode ? 'DARK_MODE_OFF' : 'DARK_MODE_ON' });
-    const newDarkMode = !darkMode;
-    Cookies.set('darkMode', newDarkMode ? 'ON' : 'OFF');
-  };
+  // const darkModeChangeHandler = () => {
+  //   dispatch({ type: darkMode ? 'DARK_MODE_OFF' : 'DARK_MODE_ON' });
+  //   const newDarkMode = !darkMode;
+  //   Cookies.set('darkMode', newDarkMode ? 'ON' : 'OFF');
+  // };
   const [anchorEl, setAnchorEl] = useState(null);
   const loginClickHandler = (e) => {
     setAnchorEl(e.currentTarget);
@@ -90,7 +90,6 @@ export default function Layout({ title, description, children }) {
             </NextLink>
             <div className={classes.grow} />
             <div>
-              <Switch checked={darkMode} onChange={darkModeChangeHandler} />
               <NextLink href="/cart" passHref>
                 <Link>
                   {cart.cartItems.length > 0 ? (
