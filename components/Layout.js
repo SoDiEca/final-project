@@ -74,7 +74,7 @@ export default function Layout({ title, description, children }) {
     <div>
       <Head>
         <title>
-          {title ? `${title} - Plant the Future` : 'Plant the Future'}
+          {title ? `${title} - Plant your Future` : 'Plant your Future'}
         </title>
         {description && <meta name="description" content={description} />}
       </Head>
@@ -85,7 +85,7 @@ export default function Layout({ title, description, children }) {
             <NextLink href="/" passHref>
               <Link>
                 <Typography className={classes.brand}>
-                  Plant the Future
+                  Plant your Future
                 </Typography>
               </Link>
             </NextLink>
