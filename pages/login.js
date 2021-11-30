@@ -16,6 +16,8 @@ import useStyles from '../utils/styles';
 import Cookies from 'js-cookie';
 import { Controller, useForm } from 'react-hook-form';
 import { useSnackbar } from 'notistack';
+import HeroLoginPage from '../components/HeroLoginPage';
+import styles from '../styles/Home.module.css';
 
 export default function Login() {
   const {
@@ -87,7 +89,7 @@ export default function Login() {
                   {...field}
                 />
               )}
-            ></Controller>
+            />
           </ListItem>
           <ListItem>
             <Controller
@@ -116,7 +118,7 @@ export default function Login() {
                   {...field}
                 />
               )}
-            ></Controller>
+            />
           </ListItem>
           <ListItem>
             <Button variant="contained" type="submit" fullWidth color="primary">

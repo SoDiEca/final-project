@@ -110,7 +110,7 @@ function CartScreen() {
                       <TableCell align="right">
                         <Button
                           variant="contained"
-                          color="secondary"
+                          color="primary"
                           onClick={() => removeItemHandler(item)}
                         >
                           x

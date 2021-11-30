@@ -20,6 +20,7 @@ import {
   MenuItem,
 } from '@material-ui/core';
 import { useRouter } from 'next/router';
+import HeroPage from './HeroPage';
 
 export default function Layout({ title, description, children }) {
   const router = useRouter();
@@ -136,9 +137,10 @@ export default function Layout({ title, description, children }) {
             </div>
           </Toolbar>
         </AppBar>
+
         <Container className={classes.main}>{children}</Container>
         <footer className={classes.footer}>
-          <Typography>All rights reserved...</Typography>
+          <Typography>© Ecaterina Voinu</Typography>
         </footer>
       </ThemeProvider>
     </div>

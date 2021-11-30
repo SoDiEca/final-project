@@ -17,12 +17,12 @@ const data = {
   ],
   products: [
     {
-      name: '1 sapling',
+      name: 'single sapling',
       slug: 'one-sapling',
       image: '/images/sapling1.jpg',
       price: 5,
       countInStock: 50,
-      description: 'Plant one Sapling',
+      description: 'Plant single Sapling',
     },
     {
       name: '5 saplings',
@@ -59,7 +59,7 @@ const data = {
     {
       name: '100 saplings',
       slug: 'hundred-saplings',
-      image: '/images/sapling1.jpg',
+      image: '/images/sapling6.jpg',
       price: 160,
       countInStock: 50,
       description: 'Plant a bundle of 100 Saplings',

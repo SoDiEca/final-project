@@ -16,8 +16,12 @@ import {
   Grid,
   Typography,
 } from '@material-ui/core';
+import HeroPage from '../components/HeroPage';
+import useStyles from '../utils/styles';
+import styles from '../styles/Home.module.css';
 
 export default function Home(props) {
+  const classes = useStyles();
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { products } = props;
@@ -33,13 +37,21 @@ export default function Home(props) {
     router.push('/cart');
   };
   return (
-    <Layout>
-      <div>
-        <h1>Sapling bundles</h1>
-        <Grid container spacing={4}>
+    <Layout className={classes.alignCenter}>
+      <HeroPage />
+
+      <h1 className={styles.PackageText}>
+        Every sapling counts - choose a package
+      </h1>
+      <p className={styles.p}>
+        Choose to plant a sapling and contribute to the major effort of planting
+        trees and help save the planet from deforestation.
+      </p>
+      <div className={classes.gridContainer}>
+        <Grid container spacing={2}>
           {products.map((product) => (
-            <Grid item md={4} key={product.name}>
-              <Card>
+            <Grid item md={2} key={product.name}>
+              <Card /* style={{ width: '80%', marginBottom: '1rem' }} */>
                 <NextLink href={`/product/${product.slug}`} passHref>
                   <CardActionArea>
                     <CardMedia
@@ -55,8 +67,10 @@ export default function Home(props) {
                 <CardActions>
                   <Typography>€{product.price}</Typography>
                   <Button
-                    size="small"
+                    variant="contained"
                     color="primary"
+                    size="small"
+                    fullWidth
                     onClick={() => addToCartHandler(product)}
                   >
                     Plant now

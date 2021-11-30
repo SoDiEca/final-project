@@ -93,7 +93,7 @@ export default function Payment() {
                   {...field}
                 />
               )}
-            ></Controller>
+            />
           </ListItem>
           <ListItem>
             <Controller
@@ -119,7 +119,7 @@ export default function Payment() {
                   {...field}
                 />
               )}
-            ></Controller>
+            />
           </ListItem>
           <ListItem>
             <Controller
@@ -145,7 +145,7 @@ export default function Payment() {
                   {...field}
                 />
               )}
-            ></Controller>
+            />
           </ListItem>
           <ListItem>
             <Controller
@@ -171,7 +171,7 @@ export default function Payment() {
                   {...field}
                 />
               )}
-            ></Controller>
+            />
           </ListItem>
         </List>
 
@@ -183,7 +183,7 @@ export default function Payment() {
             color="primary"
             onSubmit={() => router.push('/placeorder')}
           >
-            Continue to checkout
+            Continue
           </Button>
           <ListItem>
             <Button
@@ -192,7 +192,7 @@ export default function Payment() {
               variant="contained"
               onClick={() => router.push('/billing')}
             >
-              Back to billing address
+              Back
             </Button>
           </ListItem>
         </ListItem>

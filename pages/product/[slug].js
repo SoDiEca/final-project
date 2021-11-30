@@ -47,8 +47,8 @@ export default function ProductScreen(props) {
           </Link>
         </NextLink>
       </div>
-      <Grid container spacing={1}>
-        <Grid item md={6} xs={12}>
+      <Grid container spacing={6}>
+        <Grid item md={5} xs={10}>
           <Image
             src={product.image}
             alt={product.name}
